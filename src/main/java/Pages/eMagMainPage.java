@@ -1,6 +1,7 @@
 package Pages;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 
 public class eMagMainPage extends BasePage {
@@ -12,9 +13,10 @@ public class eMagMainPage extends BasePage {
     private static final String ACCOUNT = "thumbnail";
     private static final String TITLE = "navbar-brand";
 
-    public eMagMainPage(WebDriver driver) {
-        super(driver);
+    public eMagMainPage() {
+
     }
+
 
     public void loadMainPage() {
         loadUrl("https://www.emag.ro/");

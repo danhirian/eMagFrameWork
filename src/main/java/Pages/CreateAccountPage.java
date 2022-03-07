@@ -1,6 +1,7 @@
 package Pages;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class CreateAccountPage extends BasePage{
 
@@ -10,8 +11,8 @@ public class CreateAccountPage extends BasePage{
     private static final String REQUIRED_CHECK = "required";
     private static final String ACTIVATE_LATER_BUTTON = "btn btn-default btn-rounded btn-md mrg-top-sm";
 
-    public CreateAccountPage(WebDriver driver) {
-        super(driver);
+    public CreateAccountPage() {
+
     }
 
     public void chooseUsername(String username) {

@@ -11,8 +11,9 @@ public class BasePage {
     protected WebDriver driver;
     Actions actions = new Actions(driver);
 
-    public BasePage(WebDriver driver) {
-        System.setProperty("webdriver.chrome.driver", "\\src\\main\\resources\\chromedriver.exe");
+    public BasePage() {
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\hiria\\IdeaProjects\\eMag Testing FrameWork\\src\\main\\resources\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
     }
 
     protected void sendKeys(String cssLocator, String text) {

@@ -1,14 +1,15 @@
 package Pages;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class MyAccountPage extends BasePage{
 
     private static final String NAME = "//span[@class='field-name'][contains(.,'Nume:')]";
     private static final String EMAIL = "//span[@class='field-name'][contains(.,'Email:')]";
 
-    public MyAccountPage(WebDriver driver) {
-        super(driver);
+    public MyAccountPage() {
+
     }
 
     public String getName() {

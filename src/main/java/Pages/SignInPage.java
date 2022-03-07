@@ -1,6 +1,7 @@
 package Pages;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class SignInPage extends BasePage {
 
@@ -10,8 +11,8 @@ public class SignInPage extends BasePage {
     private static final String ERROR_MESSAGE = "help-block text-left";
     private static final String MY_ACCOUNT = "visible-lg-inline";
 
-    public SignInPage(WebDriver driver) {
-        super(driver);
+    public SignInPage() {
+        
     }
 
     public void typeUsername(String username) {
