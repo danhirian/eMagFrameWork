@@ -6,11 +6,15 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class EmagTest {
+public class EmagTest extends BaseTest{
     private eMagMainPage emagmainPage;
     private SignInPage signInPage;
     private CreateAccountPage createaccountPage;
     private MyAccountPage myaccountPage;
+
+    public EmagTest(WebDriver driver) {
+        super(driver);
+    }
 
     @BeforeMethod
     public void beforeMethod() {
