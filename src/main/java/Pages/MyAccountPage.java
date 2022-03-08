@@ -8,8 +8,10 @@ public class MyAccountPage extends BasePage{
     private static final String NAME = "//span[@class='field-name'][contains(.,'Nume:')]";
     private static final String EMAIL = "//span[@class='field-name'][contains(.,'Email:')]";
 
-    public MyAccountPage() {
+    public WebDriver driver;
 
+    public MyAccountPage(WebDriver driver){
+        this.driver = driver;
     }
 
     public String getName() {

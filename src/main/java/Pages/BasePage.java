@@ -5,15 +5,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
 
 public class BasePage {
 
     protected WebDriver driver;
     Actions actions = new Actions(driver);
 
-    public BasePage() {
+    public void init() {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\hiria\\IdeaProjects\\eMag Testing FrameWork\\src\\main\\resources\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
+    }
+
+    public BasePage(WebDriver driver) {
+        this.driver = driver;
     }
 
     protected void sendKeys(String cssLocator, String text) {

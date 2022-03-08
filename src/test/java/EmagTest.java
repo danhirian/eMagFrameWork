@@ -1,10 +1,12 @@
 import Pages.*;
+import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class EmagTest extends BaseTest {
+public class EmagTest {
     private eMagMainPage emagmainPage;
     private SignInPage signInPage;
     private CreateAccountPage createaccountPage;
@@ -12,10 +14,10 @@ public class EmagTest extends BaseTest {
 
     @BeforeMethod
     public void beforeMethod() {
-        emagmainPage = new eMagMainPage();
-        signInPage = new SignInPage();
-        createaccountPage = new CreateAccountPage();
-        myaccountPage = new MyAccountPage();
+        emagmainPage = new eMagMainPage(driver);
+        signInPage = new SignInPage(driver);
+        createaccountPage = new CreateAccountPage(driver);
+        myaccountPage = new MyAccountPage(driver);
 
     }
 

@@ -13,9 +13,12 @@ public class eMagMainPage extends BasePage {
     private static final String ACCOUNT = "thumbnail";
     private static final String TITLE = "navbar-brand";
 
-    public eMagMainPage() {
+    public WebDriver driver;
 
+    public eMagMainPage(WebDriver driver) {
+        this.driver = driver;
     }
+
 
 
     public void loadMainPage() {

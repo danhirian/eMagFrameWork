@@ -11,9 +11,12 @@ public class SignInPage extends BasePage {
     private static final String ERROR_MESSAGE = "help-block text-left";
     private static final String MY_ACCOUNT = "visible-lg-inline";
 
-    public SignInPage() {
-        
+    public WebDriver driver;
+
+    public SignInPage(WebDriver driver) {
+        this.driver = driver;
     }
+
 
     public void typeUsername(String username) {
         sendKeys(USERNAME, username);

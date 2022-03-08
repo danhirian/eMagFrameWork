@@ -11,8 +11,10 @@ public class CreateAccountPage extends BasePage{
     private static final String REQUIRED_CHECK = "required";
     private static final String ACTIVATE_LATER_BUTTON = "btn btn-default btn-rounded btn-md mrg-top-sm";
 
-    public CreateAccountPage() {
+    public WebDriver driver;
 
+    public CreateAccountPage(WebDriver driver) {
+        this.driver = driver;
     }
 
     public void chooseUsername(String username) {
