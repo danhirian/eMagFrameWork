@@ -10,12 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 public class BasePage {
 
     protected WebDriver driver;
-    Actions actions = new Actions(driver);
-
-    public void init() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\hiria\\IdeaProjects\\eMag Testing FrameWork\\src\\main\\resources\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
-    }
+//    Actions actions = new Actions(driver);
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -41,10 +36,10 @@ public class BasePage {
         return driver.findElement(By.xpath(xpath)).getCssValue(xpath);
     }
 
-    protected void hoverOverElement(String cssLocator) {
+    /*protected void hoverOverElement(String cssLocator) {
         WebElement hover = driver.findElement(By.cssSelector(cssLocator));
         actions.moveToElement(hover).perform();
-    }
+    }*/
 
     protected void quit() {
         driver.quit();

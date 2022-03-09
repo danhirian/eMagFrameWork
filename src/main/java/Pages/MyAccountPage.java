@@ -11,7 +11,7 @@ public class MyAccountPage extends BasePage{
     public WebDriver driver;
 
     public MyAccountPage(WebDriver driver){
-        this.driver = driver;
+        super(driver);
     }
 
     public String getName() {

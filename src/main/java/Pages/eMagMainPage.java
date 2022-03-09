@@ -16,10 +16,8 @@ public class eMagMainPage extends BasePage {
     public WebDriver driver;
 
     public eMagMainPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
-
-
 
     public void loadMainPage() {
         loadUrl("https://www.emag.ro/");
@@ -33,9 +31,9 @@ public class eMagMainPage extends BasePage {
         clickElement(SEARCH_BUTTON);
     }
 
-    public void hoverOverUser() {
+    /*public void hoverOverUser() {
         hoverOverElement(HOVER_OVER_USER);
-    }
+    }*/
 
     public void clickNewAccount() {
         clickElement(NEW_ACCOUNT);

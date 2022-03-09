@@ -12,7 +12,7 @@ public class SignInPage extends BasePage {
     private static final String MY_ACCOUNT = "visible-lg-inline";
 
     public SignInPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
 

@@ -1,32 +1,28 @@
 import Pages.*;
-import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class EmagTest extends BaseTest{
+public class EmagTest extends BaseTest {
     private eMagMainPage emagmainPage;
     private SignInPage signInPage;
     private CreateAccountPage createaccountPage;
     private MyAccountPage myaccountPage;
 
-    public EmagTest(WebDriver driver) {
-        super(driver);
-    }
-
-    @BeforeMethod
-    public void beforeMethod() {
-        emagmainPage = new eMagMainPage(driver);
-        signInPage = new SignInPage(driver);
-        createaccountPage = new CreateAccountPage(driver);
-        myaccountPage = new MyAccountPage(driver);
-
+    @Test
+    public void justTesting() {
+        webDriver.get("https://www.emag.ro/");
     }
 
     @Test(description = "Create new account")
     public void testAccountSignUp() {
+        emagmainPage = new eMagMainPage(webDriver);
+        signInPage = new SignInPage(webDriver);
+        createaccountPage = new CreateAccountPage(webDriver);
+        myaccountPage = new MyAccountPage(webDriver);
+
         emagmainPage.loadMainPage();
         emagmainPage.hoverOverUser();
         emagmainPage.clickNewAccount();
@@ -42,7 +38,7 @@ public class EmagTest extends BaseTest{
         emagmainPage.clickAccount();
         Assert.assertEquals(myaccountPage.getName(), "Test Account");
         Assert.assertEquals(myaccountPage.getEmail(), "autoTest@gmail.com");
-        driver.quit();
+        webDriver.quit();
     }
 }
 
