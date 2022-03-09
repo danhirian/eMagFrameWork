@@ -18,22 +18,22 @@ public class CreateAccountPage extends BasePage{
     }
 
     public void chooseUsername(String username) {
-        sendKeys(CHOOSE_NAME_SURNAME, username);
+        sendKeysCSS(CHOOSE_NAME_SURNAME, username);
     }
 
     public void choosePassword(String password) {
-        sendKeys(CHOOSE_PASSWORD, password);
+        sendKeysCSS(CHOOSE_PASSWORD, password);
     }
 
     public void confirmPassword(String password) {
-        sendKeys(CONFIRM_PASSWORD, password);
+        sendKeysCSS(CONFIRM_PASSWORD, password);
     }
 
     public void checkRequired() {
-        clickElement(REQUIRED_CHECK);
+        clickElementxPath(REQUIRED_CHECK);
     }
 
     public void clickActivateLaterButton() {
-        clickElement(ACTIVATE_LATER_BUTTON);
+        clickElementxPath(ACTIVATE_LATER_BUTTON);
     }
 }

@@ -10,18 +10,25 @@ import org.openqa.selenium.support.PageFactory;
 public class BasePage {
 
     protected WebDriver driver;
-//    Actions actions = new Actions(driver);
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
     }
 
-    protected void sendKeys(String cssLocator, String text) {
+    protected void sendKeys(String xpathSelector, String text) {
+        driver.findElement(By.xpath(xpathSelector)).sendKeys(text);
+    }
+
+    protected void sendKeysCSS(String cssLocator, String text) {
         driver.findElement(By.cssSelector(cssLocator)).sendKeys(text);
     }
 
-    protected void clickElement(String cssLocator) {
-        driver.findElement(By.cssSelector(cssLocator)).click();
+    protected void clickElementxPath(String xpathLocator) {
+        driver.findElement(By.xpath(xpathLocator)).click();
+    }
+
+    protected void clickElementCSS(String cssLocator) {
+        driver.findElement(By.cssSelector(cssLocator));
     }
 
     protected void loadUrl(String url) {
@@ -36,10 +43,11 @@ public class BasePage {
         return driver.findElement(By.xpath(xpath)).getCssValue(xpath);
     }
 
-    /*protected void hoverOverElement(String cssLocator) {
-        WebElement hover = driver.findElement(By.cssSelector(cssLocator));
+    protected void hoverOverElement(String xpathSelector) {
+        Actions actions = new Actions(driver);
+        WebElement hover = driver.findElement(By.xpath(xpathSelector));
         actions.moveToElement(hover).perform();
-    }*/
+    }
 
     protected void quit() {
         driver.quit();

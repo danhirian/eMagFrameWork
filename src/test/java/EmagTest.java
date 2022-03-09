@@ -11,13 +11,8 @@ public class EmagTest extends BaseTest {
     private CreateAccountPage createaccountPage;
     private MyAccountPage myaccountPage;
 
-    @Test
-    public void justTesting() {
-        webDriver.get("https://www.emag.ro/");
-    }
-
     @Test(description = "Create new account")
-    public void testAccountSignUp() {
+    public void testAccountSignUp() throws InterruptedException {
         emagmainPage = new eMagMainPage(webDriver);
         signInPage = new SignInPage(webDriver);
         createaccountPage = new CreateAccountPage(webDriver);
@@ -38,7 +33,6 @@ public class EmagTest extends BaseTest {
         emagmainPage.clickAccount();
         Assert.assertEquals(myaccountPage.getName(), "Test Account");
         Assert.assertEquals(myaccountPage.getEmail(), "autoTest@gmail.com");
-        webDriver.quit();
     }
 }
 

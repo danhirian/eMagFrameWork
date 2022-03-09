@@ -3,13 +3,12 @@ package Pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-
 public class eMagMainPage extends BasePage {
 
     private static final String SEARCH_TEXT = "searchboxTrigger";
     private static final String SEARCH_BUTTON = "em em-search";
-    private static final String HOVER_OVER_USER = "em em-user2 navbar-icon";
-    private static final String NEW_ACCOUNT = "btn btn-link btn-sm";
+    private static final String USER_ACCOUNT = "//i[contains(@class,'em em-user2 navbar-icon')]";
+    private static final String NEW_ACCOUNT = "//a[@href='/user/login?ref=hdr_signup_btn'][contains(.,'Cont nou')]";
     private static final String ACCOUNT = "thumbnail";
     private static final String TITLE = "navbar-brand";
 
@@ -28,19 +27,19 @@ public class eMagMainPage extends BasePage {
     }
 
     public void clickSearchButton() {
-        clickElement(SEARCH_BUTTON);
+        clickElementxPath(SEARCH_BUTTON);
     }
 
-    /*public void hoverOverUser() {
-        hoverOverElement(HOVER_OVER_USER);
-    }*/
+    public void hoverOverUser() {
+        hoverOverElement(USER_ACCOUNT);
+    }
 
     public void clickNewAccount() {
-        clickElement(NEW_ACCOUNT);
+        clickElementxPath(NEW_ACCOUNT);
     }
 
     public void clickAccount() {
-        clickElement(ACCOUNT);
+        clickElementxPath(ACCOUNT);
     }
 
     public String getTitle() {
