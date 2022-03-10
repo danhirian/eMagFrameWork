@@ -59,8 +59,7 @@ public class YourLogoTest extends BaseTest {
         storemainPage.typeKeyword("dress");
         storemainPage.clickSearchButton();
         Assert.assertEquals(searchPage.getLocation(), "Search");
-        Assert.assertEquals(searchPage.getPageHeading(), "dress");
-        searchPage.sortBy("Price: Highest first");
+        Assert.assertEquals(searchPage.getPageHeading(), "\"DRESS\"");
     }
 }
 

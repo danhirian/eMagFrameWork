@@ -7,7 +7,6 @@ public class BaseTest {
 
     public static WebDriver webDriver;
 
-
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
         System.out.println("Opening Chrome browser...");
@@ -19,7 +18,7 @@ public class BaseTest {
     public void quit() {
         if(webDriver != null) {
             webDriver.quit();
-            System.out.println("Closing Chrome browser");
+            System.out.println("Closing Chrome browser!");
         }
     }
 
