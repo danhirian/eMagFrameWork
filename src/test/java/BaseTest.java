@@ -21,7 +21,4 @@ public class BaseTest {
             System.out.println("Closing Chrome browser!");
         }
     }
-
-
-
 }

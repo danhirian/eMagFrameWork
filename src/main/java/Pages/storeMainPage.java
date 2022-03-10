@@ -32,11 +32,4 @@ public class storeMainPage extends BasePage {
     public String getTitle() {
         return getElementText(TITLE);
     }
-
-
-
-
-
-
-
 }

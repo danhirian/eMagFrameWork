@@ -34,5 +34,4 @@ public class SignInPage extends BasePage {
     public void insertPassword(String password) {
         sendKeysCSS(PASSWORD, password);
     }
-
 }
