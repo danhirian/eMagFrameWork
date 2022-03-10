@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class BasePage {
 
@@ -15,12 +16,12 @@ public class BasePage {
         this.driver = driver;
     }
 
-    protected void sendKeys(String xpathSelector, String text) {
+    protected void sendKeysxPath(String xpathSelector, String text) {
         driver.findElement(By.xpath(xpathSelector)).sendKeys(text);
     }
 
     protected void sendKeysCSS(String cssLocator, String text) {
-        driver.findElement(By.cssSelector(cssLocator)).sendKeys(text);
+        driver.findElement(By.id(cssLocator)).sendKeys(text);
     }
 
     protected void clickElementxPath(String xpathLocator) {
@@ -35,8 +36,8 @@ public class BasePage {
         driver.get(url);
     }
 
-    protected String getElementText(String cssLocator) {
-        return driver.findElement(By.cssSelector(cssLocator)).getText();
+    protected String getElementText(String xpathLocator) {
+        return driver.findElement(By.xpath(xpathLocator)).getText();
     }
 
     protected String getElementValue(String xpath) {
@@ -49,8 +50,14 @@ public class BasePage {
         actions.moveToElement(hover).perform();
     }
 
-    protected void quit() {
-        driver.quit();
+    protected void selectFromDropdownValue(String xpathLocator, int index) {
+        Select selector = new Select(driver.findElement(By.xpath(xpathLocator)));
+        selector.selectByIndex(index);
+    }
+
+    protected void selectFromDropdownText(String xpathLocator, String text) {
+        Select selector = new Select(driver.findElement(By.xpath(xpathLocator)));
+        selector.selectByVisibleText(text);
     }
 
 

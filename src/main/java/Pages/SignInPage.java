@@ -5,38 +5,34 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class SignInPage extends BasePage {
 
-    private static final String USERNAME = "//input[contains(@id,'user_login_email')]";
-    private static final String CONTINUE_BUTTON = "//button[contains(@id,'user_login_continue')]";
-    private static final String PASSWORD = "user_login_password";
-    private static final String ERROR_MESSAGE = "help-block text-left";
-    private static final String MY_ACCOUNT = "visible-lg-inline";
+    private static final String CREATE_ACCOUNT_EMAIL_ADDRESS = "//input[contains(@id,'email_create')]";
+    private static final String EMAIL_ADDRESS = "email";
+    private static final String CREATE_ACCOUNT_BUTTON = "//span[contains(.,'Create an account')]";
+    private static final String SIGN_IN_BUTTON = "//span[contains(.,'Sign in')]";
+    private static final String PASSWORD = "passwd";
 
     public SignInPage(WebDriver driver) {
         super(driver);
     }
 
-    public void typeUsername(String username) {
-        sendKeys(USERNAME, username);
+    public void chooseEmail(String email) {
+        sendKeysxPath(CREATE_ACCOUNT_EMAIL_ADDRESS, email);
     }
 
-    public void typePassword(String password) {
-        sendKeys(PASSWORD, password);
+    public void clickCreateAccountButton() {
+        clickElementxPath(CREATE_ACCOUNT_BUTTON);
     }
 
-    public void clickContinueButton() {
-        clickElementxPath(CONTINUE_BUTTON);
+    public void clickSignInButton() {
+        clickElementxPath(SIGN_IN_BUTTON);
     }
 
-    public String getErrorMessage() {
-        return getElementText(ERROR_MESSAGE);
+    public void insertEmailAddress(String email) {
+        sendKeysCSS(EMAIL_ADDRESS, email);
     }
 
-    public void clickMyAccount() {
-        clickElementxPath(MY_ACCOUNT);
+    public void insertPassword(String password) {
+        sendKeysCSS(PASSWORD, password);
     }
-
-
-
-
 
 }

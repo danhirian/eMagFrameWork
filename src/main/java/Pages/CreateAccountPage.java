@@ -5,35 +5,81 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class CreateAccountPage extends BasePage{
 
-    private static final String CHOOSE_NAME_SURNAME = "user_register_full_name";
-    private static final String CHOOSE_PASSWORD = "user_register_password_first";
-    private static final String CONFIRM_PASSWORD = "user_register_password_second";
-    private static final String REQUIRED_CHECK = "required";
-    private static final String ACTIVATE_LATER_BUTTON = "btn btn-default btn-rounded btn-md mrg-top-sm";
-
-    protected WebDriver driver;
+    private static final String CHOOSE_FIRST_NAME = "firstname";
+    private static final String CHOOSE_LAST_NAME = "lastname";
+    private static final String CHOOSE_CUSTOMER_FIRST_NAME = "//input[@id='customer_firstname']";
+    private static final String CHOOSE_CUSTOMER_LAST_NAME = "customer_lastname";
+    private static final String CHOOSE_PASSWORD = "passwd";
+    private static final String GENDER_MALE = "//input[@id='id_gender1']";
+    private static final String GENDER_FEMALE = "id_gender2";
+    private static final String ADDRESS = "address1";
+    private static final String CITY = "city";
+    private static final String STATE = "//select[@id='id_state']";
+    private static final String POSTAL_CODE = "postcode";
+    private static final String COUNTRY = "//select[@id='id_country']";
+    private static final String MOBILE_PHONE = "phone_mobile";
+    private static final String ALIAS = "alias";
+    private static final String REGISTER_BUTTON = "//span[contains(.,'Register')]";
 
     public CreateAccountPage(WebDriver driver) {
         super(driver);
     }
 
-    public void chooseUsername(String username) {
-        sendKeysCSS(CHOOSE_NAME_SURNAME, username);
+    public void chooseGenderMale() {
+        clickElementxPath(GENDER_MALE);
+    }
+
+    public void chooseCustomerFirstName(String cFirstName) {
+        sendKeysxPath(CHOOSE_CUSTOMER_FIRST_NAME, cFirstName);
+    }
+
+    public void chooseCustomerLastName(String cLastName) {
+        sendKeysCSS(CHOOSE_CUSTOMER_LAST_NAME, cLastName);
+    }
+
+    public void chooseFirstName(String firstName) {
+        sendKeysCSS(CHOOSE_FIRST_NAME, firstName);
+    }
+
+    public void chooseLastName(String lastName) {
+        sendKeysCSS(CHOOSE_LAST_NAME, lastName);
     }
 
     public void choosePassword(String password) {
         sendKeysCSS(CHOOSE_PASSWORD, password);
     }
 
-    public void confirmPassword(String password) {
-        sendKeysCSS(CONFIRM_PASSWORD, password);
+    public void chooseAddress(String address) {
+        sendKeysCSS(ADDRESS, address);
     }
 
-    public void checkRequired() {
-        clickElementxPath(REQUIRED_CHECK);
+    public void chooseCity(String city) {
+        sendKeysCSS(CITY, city);
     }
 
-    public void clickActivateLaterButton() {
-        clickElementxPath(ACTIVATE_LATER_BUTTON);
+    public void chooseState(int index) {
+        selectFromDropdownValue(STATE, index);
     }
+
+    public void choosePostalCode(String postalCode) {
+        sendKeysCSS(POSTAL_CODE, postalCode);
+    }
+
+    public void chooseCountry(int index) {
+        selectFromDropdownValue(COUNTRY, index);
+    }
+
+    public void chooseMobilePhone(String mobilePhone) {
+        sendKeysCSS(MOBILE_PHONE, mobilePhone);
+    }
+
+    public void chooseAlias(String alias) {
+        sendKeysCSS(ALIAS, alias);
+    }
+
+    public void clickRegisterButton() {
+        clickElementxPath(REGISTER_BUTTON);
+    }
+
+
 }
