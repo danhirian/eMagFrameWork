@@ -20,8 +20,8 @@ public class BasePage {
         driver.findElement(By.xpath(xpathSelector)).sendKeys(text);
     }
 
-    protected void sendKeysCSS(String cssLocator, String text) {
-        driver.findElement(By.id(cssLocator)).sendKeys(text);
+    protected void sendKeysCSS(String id, String text) {
+        driver.findElement(By.id(id)).sendKeys(text);
     }
 
     protected void clickElementxPath(String xpathLocator) {
@@ -40,8 +40,8 @@ public class BasePage {
         return driver.findElement(By.xpath(xpathLocator)).getText();
     }
 
-    protected String getElementValue(String xpath) {
-        return driver.findElement(By.xpath(xpath)).getCssValue(xpath);
+    protected String getElementValue(String xpathLocator) {
+        return driver.findElement(By.xpath(xpathLocator)).getCssValue(xpathLocator);
     }
 
     protected void hoverOverElement(String xpathSelector) {

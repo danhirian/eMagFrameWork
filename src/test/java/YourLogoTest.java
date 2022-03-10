@@ -1,7 +1,9 @@
 import Pages.*;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class YourLogoTest extends BaseTest {
@@ -11,14 +13,17 @@ public class YourLogoTest extends BaseTest {
     private MyAccountPage myaccountPage;
     private SearchPage searchPage;
 
-    @Test(description = "Create new account")
-    public void testAccountSignUp() {
+    @BeforeMethod
+    public void beforeMethod() {
         storemainPage = new storeMainPage(webDriver);
         signInPage = new SignInPage(webDriver);
         createaccountPage = new CreateAccountPage(webDriver);
         myaccountPage = new MyAccountPage(webDriver);
+        searchPage = new SearchPage(webDriver);
+    }
 
-
+    @Test(description = "Create new account")
+    public void testAccountSignUp() {
         storemainPage.loadMainPage();
         storemainPage.clickSignIn();
         signInPage.chooseEmail("testingaccount50@gmail.com");
@@ -42,13 +47,7 @@ public class YourLogoTest extends BaseTest {
     }
 
     @Test(description = "Search item")
-    public void testSearchItem() throws InterruptedException {
-        storemainPage = new storeMainPage(webDriver);
-        signInPage = new SignInPage(webDriver);
-        createaccountPage = new CreateAccountPage(webDriver);
-        myaccountPage = new MyAccountPage(webDriver);
-        searchPage = new SearchPage(webDriver);
-
+    public void testSearchItem() {
         storemainPage.loadMainPage();
         storemainPage.clickSignIn();
         signInPage.insertEmailAddress("testingaccount10@gmail.com");
@@ -60,21 +59,8 @@ public class YourLogoTest extends BaseTest {
         storemainPage.typeKeyword("dress");
         storemainPage.clickSearchButton();
         Assert.assertEquals(searchPage.getLocation(), "Search");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        Assert.assertEquals(searchPage.getPageHeading(), "dress");
+        searchPage.sortBy("Price: Highest first");
     }
 }
 
