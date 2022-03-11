@@ -1,7 +1,6 @@
 package Pages;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class MyAccountPage extends BasePage {
 
@@ -28,5 +27,3 @@ public class MyAccountPage extends BasePage {
         clickElementxPath(LOGO);
     }
 }
-
-

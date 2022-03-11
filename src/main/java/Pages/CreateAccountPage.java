@@ -1,7 +1,7 @@
 package Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class CreateAccountPage extends BasePage{
 
@@ -25,8 +25,9 @@ public class CreateAccountPage extends BasePage{
         super(driver);
     }
 
-    public void chooseGenderMale() {
+    public By chooseGenderMale() {
         clickElementxPath(GENDER_MALE);
+        return null;
     }
 
     public void chooseCustomerFirstName(String cFirstName) {

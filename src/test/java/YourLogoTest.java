@@ -1,13 +1,15 @@
 import Pages.*;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class YourLogoTest extends BaseTest {
-    private storeMainPage storemainPage;
+    private StoreMainPage storemainPage;
     private SignInPage signInPage;
     private CreateAccountPage createaccountPage;
     private MyAccountPage myaccountPage;
@@ -15,7 +17,7 @@ public class YourLogoTest extends BaseTest {
 
     @BeforeMethod
     public void beforeMethod() {
-        storemainPage = new storeMainPage(webDriver);
+        storemainPage = new StoreMainPage(webDriver);
         signInPage = new SignInPage(webDriver);
         createaccountPage = new CreateAccountPage(webDriver);
         myaccountPage = new MyAccountPage(webDriver);
@@ -26,10 +28,9 @@ public class YourLogoTest extends BaseTest {
     public void testAccountSignUp() {
         storemainPage.loadMainPage();
         storemainPage.clickSignIn();
-        signInPage.chooseEmail("testingaccount50@gmail.com");
+        signInPage.chooseEmail("testingaccount103@gmail.com");
         signInPage.clickCreateAccountButton();
-        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        createaccountPage.chooseGenderMale();
+        wait.until(ExpectedConditions.elementToBeClickable(createaccountPage.chooseGenderMale()));
         createaccountPage.chooseCustomerFirstName("Dan");
         createaccountPage.chooseCustomerLastName("Hirian");
         createaccountPage.chooseFirstName("Dan");
@@ -46,13 +47,17 @@ public class YourLogoTest extends BaseTest {
         Assert.assertEquals(myaccountPage.getUserName(), "Dan Hirian");
     }
 
-    @Test(description = "Search item")
-    public void testSearchItem() {
+    public void login(String username, String password) {
         storemainPage.loadMainPage();
         storemainPage.clickSignIn();
-        signInPage.insertEmailAddress("testingaccount10@gmail.com");
-        signInPage.insertPassword("blablabla");
+        signInPage.insertEmailAddress(username);
+        signInPage.insertPassword(password);
         signInPage.clickSignInButton();
+    }
+
+    @Test(description = "Search item")
+    public void testSearchItem() {
+        login("testingaccount10@gmail.com", "blablabla");
         webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         Assert.assertEquals(myaccountPage.getAccountTitle(), "Welcome to your account. Here you can manage all of your personal information and orders.");
         Assert.assertEquals(myaccountPage.getUserName(), "Dan Hirian");
@@ -61,7 +66,9 @@ public class YourLogoTest extends BaseTest {
         Assert.assertEquals(searchPage.getLocation(), "Search");
         Assert.assertEquals(searchPage.getPageHeading(), "\"DRESS\"");
     }
+
+    @Test(description = "Add to cart")
+    public void testAddToCart() {
+
+    }
 }
-
-
-
