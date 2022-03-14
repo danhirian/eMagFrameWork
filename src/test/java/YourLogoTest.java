@@ -1,8 +1,4 @@
 import Pages.*;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -26,7 +22,7 @@ public class YourLogoTest extends BaseTest {
     }
 
     @Test(description = "Create new account")
-    public void testAccountSignUp() throws InterruptedException {
+    public void testAccountSignUp() {
         storemainPage.loadMainPage();
         storemainPage.clickSignIn();
         signInPage.chooseEmail();
