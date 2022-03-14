@@ -18,7 +18,7 @@ public class StoreMainPage extends BasePage {
     }
 
     public void typeKeyword(String key) {
-        sendKeysxPath(SEARCH_BAR, key);
+        sendKeys(SEARCH_BAR, key);
     }
 
     public void clickSearchButton() {

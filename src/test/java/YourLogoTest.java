@@ -1,4 +1,5 @@
 import Pages.*;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -25,12 +26,13 @@ public class YourLogoTest extends BaseTest {
     }
 
     @Test(description = "Create new account")
-    public void testAccountSignUp() {
+    public void testAccountSignUp() throws InterruptedException {
         storemainPage.loadMainPage();
         storemainPage.clickSignIn();
-        signInPage.chooseEmail("testingaccount103@gmail.com");
+        signInPage.chooseEmail();
         signInPage.clickCreateAccountButton();
-        wait.until(ExpectedConditions.elementToBeClickable(createaccountPage.chooseGenderMale()));
+        webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        createaccountPage.chooseGenderMale();
         createaccountPage.chooseCustomerFirstName("Dan");
         createaccountPage.chooseCustomerLastName("Hirian");
         createaccountPage.chooseFirstName("Dan");
@@ -58,7 +60,6 @@ public class YourLogoTest extends BaseTest {
     @Test(description = "Search item")
     public void testSearchItem() {
         login("testingaccount10@gmail.com", "blablabla");
-        webDriver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         Assert.assertEquals(myaccountPage.getAccountTitle(), "Welcome to your account. Here you can manage all of your personal information and orders.");
         Assert.assertEquals(myaccountPage.getUserName(), "Dan Hirian");
         storemainPage.typeKeyword("dress");

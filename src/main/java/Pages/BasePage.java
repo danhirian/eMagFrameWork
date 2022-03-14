@@ -14,12 +14,8 @@ public class BasePage {
         this.driver = driver;
     }
 
-    protected void sendKeysxPath(String xpathSelector, String text) {
+    protected void sendKeys(String xpathSelector, String text) {
         driver.findElement(By.xpath(xpathSelector)).sendKeys(text);
-    }
-
-    protected void sendKeysCSS(String id, String text) {
-        driver.findElement(By.id(id)).sendKeys(text);
     }
 
     protected void clickElementxPath(String xpathLocator) {
