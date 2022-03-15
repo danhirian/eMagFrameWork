@@ -18,7 +18,7 @@ public class SignInPage extends BasePage {
 
     public void chooseEmail() {
         Random randomGenerator = new Random();
-        int randomInt = randomGenerator.nextInt(1000);
+        int randomInt = randomGenerator.nextInt(10000);
         sendKeys(CREATE_ACCOUNT_EMAIL_ADDRESS, "username" + randomInt + "@gmail.com");
     }
 

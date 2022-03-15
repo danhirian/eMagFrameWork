@@ -24,6 +24,26 @@ public class YourLogoTest extends BaseTest {
         addtocartPage = new AddToCartPage(webDriver);
     }
 
+    public void login(String username, String password) {
+        storemainPage.loadMainPage();
+        storemainPage.clickSignIn();
+        signInPage.insertEmailAddress(username);
+        signInPage.insertPassword(password);
+        signInPage.clickSignInButton();
+    }
+
+    public void increaseQuantity(int quantity) {
+        for (int i = 0; i < quantity; i++) {
+            addtocartPage.increaseQuantity();
+        }
+    }
+
+    public void decreaseQuantity(int quantity) {
+        for (int i = 0; i < quantity; i++) {
+            addtocartPage.decreaseQuantity();
+        }
+    }
+
     @Test(description = "Create new account")
     public void testAccountSignUp() {
         storemainPage.loadMainPage();
@@ -48,14 +68,6 @@ public class YourLogoTest extends BaseTest {
         Assert.assertEquals(myaccountPage.getUserName(), "Dan Hirian");
     }
 
-    public void login(String username, String password) {
-        storemainPage.loadMainPage();
-        storemainPage.clickSignIn();
-        signInPage.insertEmailAddress(username);
-        signInPage.insertPassword(password);
-        signInPage.clickSignInButton();
-    }
-
     @Test(description = "Search item")
     public void testSearchItem() {
         login("testingaccount10@gmail.com", "blablabla");
@@ -65,18 +77,6 @@ public class YourLogoTest extends BaseTest {
         storemainPage.clickSearchButton();
         Assert.assertEquals(searchPage.getLocation(), "Search");
         Assert.assertEquals(searchPage.getPageHeading(), "\"DRESS\"");
-    }
-
-    public void increaseQuantity(int quantity) {
-        for(int i=0; i < quantity; i++) {
-            addtocartPage.increaseQuantity();
-        }
-    }
-
-    public void decreaseQuantity(int quantity) {
-        for(int i=0; i < quantity; i++) {
-            addtocartPage.decreaseQuantity();
-        }
     }
 
     @Test(description = "Add to cart")

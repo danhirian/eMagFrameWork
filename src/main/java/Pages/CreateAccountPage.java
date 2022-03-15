@@ -3,7 +3,7 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class CreateAccountPage extends BasePage{
+public class CreateAccountPage extends BasePage {
 
     private static final String CHOOSE_FIRST_NAME = "//input[@id='firstname']";
     private static final String CHOOSE_LAST_NAME = "//input[@id='lastname']";
