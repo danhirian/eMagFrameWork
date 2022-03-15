@@ -96,8 +96,11 @@ public class YourLogoTest extends BaseTest {
         wait.until(ExpectedConditions.visibilityOf(addtocartPage.getConfirmationModal()));
         Assert.assertEquals(addtocartPage.getTitleText(), "Product successfully added to your shopping cart");
         addtocartPage.clickOnContinueShopping();
-
-
-
+        Assert.assertEquals(addtocartPage.getItemDescriptionText(), "Printed evening dress with straight sleeves with black thin waist belt and ruffled linings.");
+        decreaseQuantity(5);
+        addtocartPage.addToCart();
+        wait.until(ExpectedConditions.visibilityOf(addtocartPage.getConfirmationModal()));
+        Assert.assertEquals(addtocartPage.getTitleText(), "Product successfully added to your shopping cart");
+        Assert.assertEquals(addtocartPage.getItemNumberConfirmation(), "There are 17 items in your cart.");
     }
 }
