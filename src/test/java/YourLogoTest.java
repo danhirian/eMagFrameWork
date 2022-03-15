@@ -103,4 +103,14 @@ public class YourLogoTest extends BaseTest {
         Assert.assertEquals(addtocartPage.getTitleText(), "Product successfully added to your shopping cart");
         Assert.assertEquals(addtocartPage.getItemNumberConfirmation(), "There are 17 items in your cart.");
     }
+
+    @Test(description = "Logout")
+    public void logOut() {
+        login("testingaccount10@gmail.com", "blablabla");
+        Assert.assertEquals(myaccountPage.getAccountTitle(), "Welcome to your account. Here you can manage all of your personal information and orders.");
+        Assert.assertEquals(myaccountPage.getUserName(), "Dan Hirian");
+        signInPage.clickSignOutButton();
+
+
+    }
 }

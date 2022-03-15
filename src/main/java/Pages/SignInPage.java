@@ -11,6 +11,7 @@ public class SignInPage extends BasePage {
     private static final String CREATE_ACCOUNT_BUTTON = "//span[contains(.,'Create an account')]";
     private static final String SIGN_IN_BUTTON = "//span[contains(.,'Sign in')]";
     private static final String PASSWORD = "//input[contains(@data-validate,'isPasswd')]";
+    private static final String SIGN_OUT_BUTTON = "//a[@href='http://automationpractice.com/index.php?mylogout=']";
 
     public SignInPage(WebDriver driver) {
         super(driver);
@@ -36,5 +37,9 @@ public class SignInPage extends BasePage {
 
     public void insertPassword(String password) {
         sendKeys(PASSWORD, password);
+    }
+
+    public void clickSignOutButton() {
+        clickElementxPath(SIGN_OUT_BUTTON);
     }
 }
