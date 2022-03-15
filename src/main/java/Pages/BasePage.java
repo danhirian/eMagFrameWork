@@ -49,4 +49,8 @@ public class BasePage {
         Select selector = new Select(driver.findElement(By.xpath(xpathLocator)));
         selector.selectByVisibleText(text);
     }
+
+    protected WebElement getModal(String xpathLocator) {
+        return driver.findElement(By.xpath(xpathLocator));
+    }
 }

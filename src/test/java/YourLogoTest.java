@@ -1,4 +1,5 @@
 import Pages.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -11,6 +12,7 @@ public class YourLogoTest extends BaseTest {
     private CreateAccountPage createaccountPage;
     private MyAccountPage myaccountPage;
     private SearchPage searchPage;
+    private AddToCartPage addtocartPage;
 
     @BeforeMethod
     public void beforeMethod() {
@@ -19,6 +21,7 @@ public class YourLogoTest extends BaseTest {
         createaccountPage = new CreateAccountPage(webDriver);
         myaccountPage = new MyAccountPage(webDriver);
         searchPage = new SearchPage(webDriver);
+        addtocartPage = new AddToCartPage(webDriver);
     }
 
     @Test(description = "Create new account")
@@ -64,8 +67,37 @@ public class YourLogoTest extends BaseTest {
         Assert.assertEquals(searchPage.getPageHeading(), "\"DRESS\"");
     }
 
+    public void increaseQuantity(int quantity) {
+        for(int i=0; i < quantity; i++) {
+            addtocartPage.increaseQuantity();
+        }
+    }
+
+    public void decreaseQuantity(int quantity) {
+        for(int i=0; i < quantity; i++) {
+            addtocartPage.decreaseQuantity();
+        }
+    }
+
     @Test(description = "Add to cart")
     public void testAddToCart() {
+        login("testingaccount10@gmail.com", "blablabla");
+        Assert.assertEquals(myaccountPage.getAccountTitle(), "Welcome to your account. Here you can manage all of your personal information and orders.");
+        Assert.assertEquals(myaccountPage.getUserName(), "Dan Hirian");
+        storemainPage.typeKeyword("dress");
+        storemainPage.clickSearchButton();
+        Assert.assertEquals(searchPage.getLocation(), "Search");
+        Assert.assertEquals(searchPage.getPageHeading(), "\"DRESS\"");
+        searchPage.sortBy("Price: Highest first");
+        searchPage.clickFirstItem();
+        increaseQuantity(10);
+        addtocartPage.selectColorPink();
+        addtocartPage.addToCart();
+        wait.until(ExpectedConditions.visibilityOf(addtocartPage.getConfirmationModal()));
+        Assert.assertEquals(addtocartPage.getTitleText(), "Product successfully added to your shopping cart");
+        addtocartPage.clickOnContinueShopping();
+
+
 
     }
 }
