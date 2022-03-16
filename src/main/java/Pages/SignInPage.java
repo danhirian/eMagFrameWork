@@ -12,6 +12,7 @@ public class SignInPage extends BasePage {
     private static final String SIGN_IN_BUTTON = "//span[contains(.,'Sign in')]";
     private static final String PASSWORD = "//input[contains(@data-validate,'isPasswd')]";
     private static final String SIGN_OUT_BUTTON = "//a[@href='http://automationpractice.com/index.php?mylogout=']";
+    private static final String HOME_ICON = "//i[contains(@class,'icon-home')]";
 
     public SignInPage(WebDriver driver) {
         super(driver);
@@ -41,5 +42,13 @@ public class SignInPage extends BasePage {
 
     public void clickSignOutButton() {
         clickElementxPath(SIGN_OUT_BUTTON);
+    }
+
+    public String getSignInButtonText() {
+        return getElementText(SIGN_IN_BUTTON);
+    }
+
+    public void clickOnHomeIcon() {
+        clickElementxPath(HOME_ICON);
     }
 }

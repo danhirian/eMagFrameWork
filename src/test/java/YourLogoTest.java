@@ -13,6 +13,7 @@ public class YourLogoTest extends BaseTest {
     private MyAccountPage myaccountPage;
     private SearchPage searchPage;
     private AddToCartPage addtocartPage;
+    private MainPage mainPage;
 
     @BeforeMethod
     public void beforeMethod() {
@@ -22,6 +23,7 @@ public class YourLogoTest extends BaseTest {
         myaccountPage = new MyAccountPage(webDriver);
         searchPage = new SearchPage(webDriver);
         addtocartPage = new AddToCartPage(webDriver);
+        mainPage = new MainPage(webDriver);
     }
 
     public void login(String username, String password) {
@@ -110,7 +112,13 @@ public class YourLogoTest extends BaseTest {
         Assert.assertEquals(myaccountPage.getAccountTitle(), "Welcome to your account. Here you can manage all of your personal information and orders.");
         Assert.assertEquals(myaccountPage.getUserName(), "Dan Hirian");
         signInPage.clickSignOutButton();
-
-
+        Assert.assertEquals(signInPage.getSignInButtonText(), "Sign in");
+        login("testingaccount10@gmail.com", "blablabla");
+        Assert.assertEquals(myaccountPage.getAccountTitle(), "Welcome to your account. Here you can manage all of your personal information and orders.");
+        Assert.assertEquals(myaccountPage.getUserName(), "Dan Hirian");
+        signInPage.clickOnHomeIcon();
+        Assert.assertEquals(mainPage.getCustomTextBlock(), "Selenium Framework website was designed solely to help folks get over the fear of Automation. The website was an inspiration from the fact that there is no website that can bridge the gaps between the differences among various programming languages and help non-programmers get a taste of Automation.");
+        signInPage.clickSignOutButton();
+        Assert.assertEquals(mainPage.getSignInButtonText(), "Sign in");
     }
 }
