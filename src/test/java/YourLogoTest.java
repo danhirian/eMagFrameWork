@@ -1,4 +1,5 @@
 import Pages.*;
+import Utils.Strings;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -26,6 +27,71 @@ public class YourLogoTest extends BaseTest {
         mainPage = new MainPage(webDriver);
     }
 
+    @Test(description = "Create new account")
+    public void testAccountSignUp() {
+        storemainPage.loadMainPage();
+        storemainPage.clickSignIn();
+        signInPage.chooseEmail();
+        signInPage.clickCreateAccountButton();
+        webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        createaccountPage.chooseGenderMale();
+        createaccountPage.chooseCustomerFirstName(Strings.CUSTOMER_FIRST_NAME);
+        createaccountPage.chooseCustomerLastName(Strings.CUSTOMER_LAST_NAME);
+        createaccountPage.chooseFirstName(Strings.FIRST_NAME);
+        createaccountPage.chooseLastName(Strings.LAST_NAME);
+        createaccountPage.choosePassword(Strings.CHOOSE_PASSWORD);
+        createaccountPage.chooseAddress(Strings.ADDRESS);
+        createaccountPage.chooseCity(Strings.CITY);
+        createaccountPage.choosePostalCode(Strings.POSTAL_CODE);
+        createaccountPage.chooseState(2);
+        createaccountPage.chooseMobilePhone(Strings.MOBILE_PHONE);
+        createaccountPage.chooseAlias(Strings.ALIAS);
+        createaccountPage.clickRegisterButton();
+        Assert.assertEquals(myaccountPage.getAccountTitle(), Strings.ACCOUNT_TITLE);
+        Assert.assertEquals(myaccountPage.getUserName(), Strings.USER_NAME);
+    }
+
+    @Test(description = "Search item")
+    public void testSearchItem() {
+        login(Strings.LOGIN_EMAIL, Strings.LOGIN_PASSWORD);
+        storemainPage.typeKeyword(Strings.TYPE_KEYWORD_IN_SEARCH_BAR);
+        storemainPage.clickSearchButton();
+        Assert.assertEquals(searchPage.getLocation(), Strings.LOCATION);
+        Assert.assertEquals(searchPage.getPageHeading(), Strings.PAGE_HEADING);
+    }
+
+    @Test(description = "Add to cart")
+    public void testAddToCart() {
+        login(Strings.LOGIN_EMAIL, Strings.LOGIN_PASSWORD);
+        storemainPage.typeKeyword(Strings.TYPE_KEYWORD_IN_SEARCH_BAR);
+        storemainPage.clickSearchButton();
+        searchPage.sortBy("Price: Highest first");
+        searchPage.clickFirstItem();
+        increaseQuantity(10);
+        addtocartPage.selectColorPink();
+        addtocartPage.addToCart();
+        wait.until(ExpectedConditions.visibilityOf(addtocartPage.getConfirmationModal()));
+        Assert.assertEquals(addtocartPage.getTitleText(), Strings.CONFIRMATION_MODAL_TITLE_TEXT);
+        addtocartPage.clickOnContinueShopping();
+        Assert.assertEquals(addtocartPage.getItemDescriptionText(), Strings.ITEM_DESCRIPTION);
+        decreaseQuantity(5);
+        addtocartPage.addToCart();
+        wait.until(ExpectedConditions.visibilityOf(addtocartPage.getConfirmationModal()));
+        Assert.assertEquals(addtocartPage.getItemNumberConfirmation(), Strings.ITEM_NUMBER_CONFIRMATION);
+    }
+
+    @Test(description = "Logout")
+    public void logOut() {
+        login(Strings.LOGIN_EMAIL, Strings.LOGIN_PASSWORD);
+        signInPage.clickSignOutButton();
+        Assert.assertEquals(signInPage.getSignInButtonText(), Strings.SIGN_IN_BUTTON_TEXT);
+        login(Strings.LOGIN_EMAIL, Strings.LOGIN_PASSWORD);
+        signInPage.clickOnHomeIcon();
+        Assert.assertEquals(mainPage.getCustomTextBlock(), Strings.CUSTOM_TEXT_BLOCK);
+        signInPage.clickSignOutButton();
+        Assert.assertEquals(mainPage.getSignInButtonText(), Strings.SIGN_IN_BUTTON_TEXT);
+    }
+
     public void login(String username, String password) {
         storemainPage.loadMainPage();
         storemainPage.clickSignIn();
@@ -44,81 +110,5 @@ public class YourLogoTest extends BaseTest {
         for (int i = 0; i < quantity; i++) {
             addtocartPage.decreaseQuantity();
         }
-    }
-
-    @Test(description = "Create new account")
-    public void testAccountSignUp() {
-        storemainPage.loadMainPage();
-        storemainPage.clickSignIn();
-        signInPage.chooseEmail();
-        signInPage.clickCreateAccountButton();
-        webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        createaccountPage.chooseGenderMale();
-        createaccountPage.chooseCustomerFirstName("Dan");
-        createaccountPage.chooseCustomerLastName("Hirian");
-        createaccountPage.chooseFirstName("Dan");
-        createaccountPage.chooseLastName("Hirian");
-        createaccountPage.choosePassword("blablabla");
-        createaccountPage.chooseAddress("luceafarului nr.3");
-        createaccountPage.chooseCity("Timisoara");
-        createaccountPage.choosePostalCode("30002");
-        createaccountPage.chooseState(2);
-        createaccountPage.chooseMobilePhone("0728898989");
-        createaccountPage.chooseAlias("Home Address");
-        createaccountPage.clickRegisterButton();
-        Assert.assertEquals(myaccountPage.getAccountTitle(), "Welcome to your account. Here you can manage all of your personal information and orders.");
-        Assert.assertEquals(myaccountPage.getUserName(), "Dan Hirian");
-    }
-
-    @Test(description = "Search item")
-    public void testSearchItem() {
-        login("testingaccount10@gmail.com", "blablabla");
-        Assert.assertEquals(myaccountPage.getAccountTitle(), "Welcome to your account. Here you can manage all of your personal information and orders.");
-        Assert.assertEquals(myaccountPage.getUserName(), "Dan Hirian");
-        storemainPage.typeKeyword("dress");
-        storemainPage.clickSearchButton();
-        Assert.assertEquals(searchPage.getLocation(), "Search");
-        Assert.assertEquals(searchPage.getPageHeading(), "\"DRESS\"");
-    }
-
-    @Test(description = "Add to cart")
-    public void testAddToCart() {
-        login("testingaccount10@gmail.com", "blablabla");
-        Assert.assertEquals(myaccountPage.getAccountTitle(), "Welcome to your account. Here you can manage all of your personal information and orders.");
-        Assert.assertEquals(myaccountPage.getUserName(), "Dan Hirian");
-        storemainPage.typeKeyword("dress");
-        storemainPage.clickSearchButton();
-        Assert.assertEquals(searchPage.getLocation(), "Search");
-        Assert.assertEquals(searchPage.getPageHeading(), "\"DRESS\"");
-        searchPage.sortBy("Price: Highest first");
-        searchPage.clickFirstItem();
-        increaseQuantity(10);
-        addtocartPage.selectColorPink();
-        addtocartPage.addToCart();
-        wait.until(ExpectedConditions.visibilityOf(addtocartPage.getConfirmationModal()));
-        Assert.assertEquals(addtocartPage.getTitleText(), "Product successfully added to your shopping cart");
-        addtocartPage.clickOnContinueShopping();
-        Assert.assertEquals(addtocartPage.getItemDescriptionText(), "Printed evening dress with straight sleeves with black thin waist belt and ruffled linings.");
-        decreaseQuantity(5);
-        addtocartPage.addToCart();
-        wait.until(ExpectedConditions.visibilityOf(addtocartPage.getConfirmationModal()));
-        Assert.assertEquals(addtocartPage.getTitleText(), "Product successfully added to your shopping cart");
-        Assert.assertEquals(addtocartPage.getItemNumberConfirmation(), "There are 17 items in your cart.");
-    }
-
-    @Test(description = "Logout")
-    public void logOut() {
-        login("testingaccount10@gmail.com", "blablabla");
-        Assert.assertEquals(myaccountPage.getAccountTitle(), "Welcome to your account. Here you can manage all of your personal information and orders.");
-        Assert.assertEquals(myaccountPage.getUserName(), "Dan Hirian");
-        signInPage.clickSignOutButton();
-        Assert.assertEquals(signInPage.getSignInButtonText(), "Sign in");
-        login("testingaccount10@gmail.com", "blablabla");
-        Assert.assertEquals(myaccountPage.getAccountTitle(), "Welcome to your account. Here you can manage all of your personal information and orders.");
-        Assert.assertEquals(myaccountPage.getUserName(), "Dan Hirian");
-        signInPage.clickOnHomeIcon();
-        Assert.assertEquals(mainPage.getCustomTextBlock(), "Selenium Framework website was designed solely to help folks get over the fear of Automation. The website was an inspiration from the fact that there is no website that can bridge the gaps between the differences among various programming languages and help non-programmers get a taste of Automation.");
-        signInPage.clickSignOutButton();
-        Assert.assertEquals(mainPage.getSignInButtonText(), "Sign in");
     }
 }
