@@ -21,7 +21,6 @@ public class Strings {
     //MainPage
     public static final String TYPE_KEYWORD_IN_SEARCH_BAR = "dress";
 
-
     //Asserts - MyAccountPage
     public static final String ACCOUNT_TITLE = "Welcome to your account. Here you can manage all of your personal information and orders.";
     public static final String USER_NAME = "Dan Hirian";
