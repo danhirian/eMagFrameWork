@@ -27,6 +27,13 @@ public class YourLogoTest extends BaseTest {
         mainPage = new MainPage(webDriver);
     }
 
+    @Test(description = "SignIn")
+    public void testSignIn() {
+        login(Strings.LOGIN_EMAIL, Strings.LOGIN_PASSWORD);
+        Assert.assertEquals(myaccountPage.getAccountTitle(), Strings.ACCOUNT_TITLE);
+        Assert.assertEquals(myaccountPage.getUserName(), Strings.USER_NAME);
+    }
+
     @Test(description = "Create new account")
     public void testAccountSignUp() {
         storemainPage.loadMainPage();
@@ -65,7 +72,7 @@ public class YourLogoTest extends BaseTest {
         login(Strings.LOGIN_EMAIL, Strings.LOGIN_PASSWORD);
         storemainPage.typeKeyword(Strings.TYPE_KEYWORD_IN_SEARCH_BAR);
         storemainPage.clickSearchButton();
-        searchPage.sortBy("Price: Highest first");
+        searchPage.sortBy(Strings.SORT_BY_TEXT);
         searchPage.clickFirstItem();
         increaseQuantity(10);
         addtocartPage.selectColorPink();

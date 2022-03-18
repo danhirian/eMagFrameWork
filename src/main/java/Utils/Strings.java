@@ -29,6 +29,7 @@ public class Strings {
     //Asserts - SearchPage
     public static final String LOCATION = "search";
     public static final String PAGE_HEADING = "\"DRESS\"";
+    public static final String SORT_BY_TEXT = "Price: Highest first";
 
     //Asserts - AddToCartPage
     public static final String CONFIRMATION_MODAL_TITLE_TEXT = "Product successfully added to your shopping cart";
