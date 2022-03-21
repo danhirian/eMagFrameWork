@@ -64,12 +64,11 @@ public class BasePage {
         webElement.click();
     }
 
-    protected void clickListElement(List<WebElement> webElements, int position) {
+    protected void clickElement(List<WebElement> webElements, int position) {
         clickElement(webElements.get(position));
     }
 
-    protected void clickElement(String xpathLocator, int position) {
-        clickListElement(findElements(xpathLocator), position);
+    protected void clickElement(String cssSelector, int position) {
+        clickElement(findElements(cssSelector), position);
     }
-
 }

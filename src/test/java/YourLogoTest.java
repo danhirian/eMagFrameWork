@@ -110,7 +110,6 @@ public class YourLogoTest extends BaseTest {
         catalogPage.clickThirdCategory();
 
 
-
     }
 
     public void login(String username, String password) {

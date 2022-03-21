@@ -20,7 +20,7 @@ public class CatalogPage extends BasePage {
     }
 
     public void clickThirdCategory() {
-        clickElement(CATEGORIES_LIST, 0);
+        clickElement(CATEGORIES_LIST, 2);
     }
 
 
