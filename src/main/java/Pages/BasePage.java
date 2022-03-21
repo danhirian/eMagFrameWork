@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
+
 public class BasePage {
 
     protected WebDriver driver;
@@ -53,4 +55,21 @@ public class BasePage {
     protected WebElement getModal(String xpathLocator) {
         return driver.findElement(By.xpath(xpathLocator));
     }
+
+    protected List<WebElement> findElements(String xpathLocator) {
+        return driver.findElements(By.xpath(xpathLocator));
+    }
+
+    protected void clickElement(WebElement webElement) {
+        webElement.click();
+    }
+
+    protected void clickListElement(List<WebElement> webElements, int position) {
+        clickElement(webElements.get(position));
+    }
+
+    protected void clickElement(String xpathLocator, int position) {
+        clickListElement(findElements(xpathLocator), position);
+    }
+
 }

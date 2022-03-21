@@ -15,6 +15,7 @@ public class YourLogoTest extends BaseTest {
     private SearchPage searchPage;
     private AddToCartPage addtocartPage;
     private MainPage mainPage;
+    private CatalogPage catalogPage;
 
     @BeforeMethod
     public void beforeMethod() {
@@ -25,6 +26,7 @@ public class YourLogoTest extends BaseTest {
         searchPage = new SearchPage(webDriver);
         addtocartPage = new AddToCartPage(webDriver);
         mainPage = new MainPage(webDriver);
+        catalogPage = new CatalogPage(webDriver);
     }
 
     @Test(description = "SignIn")
@@ -88,7 +90,7 @@ public class YourLogoTest extends BaseTest {
     }
 
     @Test(description = "Logout")
-    public void logOut() {
+    public void testLogOut() {
         login(Strings.LOGIN_EMAIL, Strings.LOGIN_PASSWORD);
         signInPage.clickSignOutButton();
         Assert.assertEquals(signInPage.getSignInButtonText(), Strings.SIGN_IN_BUTTON_TEXT);
@@ -97,6 +99,18 @@ public class YourLogoTest extends BaseTest {
         Assert.assertEquals(mainPage.getCustomTextBlock(), Strings.CUSTOM_TEXT_BLOCK);
         signInPage.clickSignOutButton();
         Assert.assertEquals(mainPage.getSignInButtonText(), Strings.SIGN_IN_BUTTON_TEXT);
+    }
+
+    @Test(description = "Enable filters")
+    public void testFilters() {
+        login(Strings.LOGIN_EMAIL, Strings.LOGIN_PASSWORD);
+        signInPage.clickOnHomeIcon();
+        mainPage.clickDressesButton();
+        webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        catalogPage.clickThirdCategory();
+
+
+
     }
 
     public void login(String username, String password) {
