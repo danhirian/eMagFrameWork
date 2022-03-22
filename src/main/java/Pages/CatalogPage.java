@@ -20,8 +20,26 @@ public class CatalogPage extends BasePage {
     }
 
     public void clickThirdCategory() {
-        clickElement(CATEGORIES_LIST, 2);
+        clickElement(CATEGORIES_LIST, 0);
     }
+
+    public void clickSizeM() {
+        clickElement(SIZE_LIST, 1);
+    }
+
+    public void clickSecondComposition() {
+        clickElement(COMPOSITIONS_LIST, 1);
+    }
+
+    public void clickThirdStyle() {
+        clickElement(STYLES_LIST, 2);
+    }
+
+    public void clickLastProperty() {
+        clickElement(PROPERTIES_LIST, 3);
+    }
+
+
 
 
 

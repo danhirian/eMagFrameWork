@@ -108,6 +108,11 @@ public class YourLogoTest extends BaseTest {
         mainPage.clickDressesButton();
         webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         catalogPage.clickThirdCategory();
+        catalogPage.clickSizeM();
+        catalogPage.clickLastProperty();
+        catalogPage.clickSecondComposition();
+        catalogPage.clickThirdStyle();
+
 
 
     }
