@@ -26,7 +26,7 @@ public class Strings {
     public static final String USER_NAME = "Dan Hirian";
 
     //Asserts - SearchPage
-    public static final String LOCATION = "search";
+    public static final String LOCATION = "Search";
     public static final String PAGE_HEADING = "\"DRESS\"";
     public static final String SORT_BY_TEXT = "Price: Highest first";
 

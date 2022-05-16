@@ -112,9 +112,6 @@ public class YourLogoTest extends BaseTest {
         catalogPage.clickLastProperty();
         catalogPage.clickSecondComposition();
         catalogPage.clickThirdStyle();
-
-
-
     }
 
     public void login(String username, String password) {
