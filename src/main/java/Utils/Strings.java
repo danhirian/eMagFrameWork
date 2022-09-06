@@ -4,11 +4,11 @@ public class Strings {
 
     //Account creation
     public static final String CUSTOMER_FIRST_NAME = "Dan";
-    public static final String CUSTOMER_LAST_NAME = "Hirian";
+    public static final String CUSTOMER_LAST_NAME = "Gerousu";
     public static final String FIRST_NAME = "Dan";
-    public static final String LAST_NAME = "Hirian";
+    public static final String LAST_NAME = "Gerousu";
     public static final String CHOOSE_PASSWORD = "blablabla";
-    public static final String ADDRESS = "luceafarului nr.3";
+    public static final String ADDRESS = "strada jmekeriei nr 777";
     public static final String CITY = "Timisoara";
     public static final String POSTAL_CODE = "30002";
     public static final String MOBILE_PHONE = "0728898989";
