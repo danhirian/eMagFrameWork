@@ -12,7 +12,7 @@ public class BaseTest {
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
         System.out.println("Opening Chrome browser...");
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\hiria\\IdeaProjects\\eMag Testing FrameWork\\src\\main\\resources\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Dan\\Downloads\\chromedriver.exe");
         webDriver = new ChromeDriver();
         wait = new WebDriverWait(webDriver, 20);
     }

@@ -7,7 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="eMag Testing FrameWork" />
-        <module name="eMagFrameWork" />
+        <module name="eCommerceFramework" />
       </profile>
     </annotationProcessing>
   </component>
